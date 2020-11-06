@@ -1,5 +1,5 @@
-node_modules
-.babelrc
-.eslintrc
-test
-circle.yml
+.*
+/dr.pogodin-babel-plugin-transform-assets-*.tgz
+/node_modules
+/src
+/test

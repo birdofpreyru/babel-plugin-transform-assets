@@ -1,11 +1,11 @@
 {
-  "name": "babel-plugin-transform-assets",
+  "name": "@dr.pogodin/babel-plugin-transform-assets",
   "version": "1.1.0",
   "description": "Transforms importing of asset files at compile time using Babel",
   "main": "lib/index.js",
-  "author": "Jake Murzy <jake@murzy>",
+  "author": "Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio)",
   "license": "MIT",
-  "homepage": "https://github.com/jmurzy/babel-plugin-transform-assets",
+  "homepage": "https://dr.pogodin.studio",
   "keywords": [
     "babel",
     "webpack",
@@ -30,17 +30,17 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "clean": "rimraf lib",
-    "build": "npm run clean && node node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf build",
+    "build": "npm run clean && node node_modules/.bin/babel src --out-dir build",
     "lint": "node node_modules/.bin/eslint src test",
     "test": "npm run lint && node node_modules/.bin/mocha --require @babel/register 'test/**/*.spec.js'"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmurzy/babel-plugin-transform-assets.git"
+    "url": "https://github.com/birdofpreyru/babel-plugin-transform-assets.git"
   },
   "bugs": {
-    "url": "https://github.com/jmurzy/babel-plugin-transform-assets/issues"
+    "url": "https://github.com/birdofpreyru/babel-plugin-transform-assets/issues"
   },
   "dependencies": {
     "loader-utils": "^2.0.0"
