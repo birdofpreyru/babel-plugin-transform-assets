@@ -6,14 +6,15 @@ import gulpUtil from 'gulp-util';
 import gulpBabel from 'gulp-babel';
 
 describe('transforms assets', () => {
-  const transform = (filename, config = {}) =>
-    transformFileSync(path.resolve(__dirname, filename), {
+  const transform = (filename, config = {}) => transformFileSync(
+    path.resolve(__dirname, filename), {
       babelrc: false,
-      presets: ['@babel/es2015'],
+      presets: ['@babel/env'],
       plugins: [
         ['./src/index.js', config],
       ],
-    });
+    },
+  );
 
   it('replaces require statements with filename', () => {
     expect(transform('fixtures/require-txt.js', {
@@ -30,7 +31,7 @@ var file = "file.txt?9LDjftP";`);
 
 var _file = _interopRequireDefault("file.txt?9LDjftP");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }`);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
   });
 
   it('replaces import statements with filename and then exports', () => {
@@ -44,20 +45,19 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "file", {
   enumerable: true,
   get: function get() {
-    return _file.default;
+    return _file["default"];
   }
 });
 
 var _file = _interopRequireDefault("file.txt?9LDjftP");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }`);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
   });
-
 
   it('replaces import statement with filename via gulp', (cb) => {
     const stream = gulpBabel({
       babelrc: false,
-      presets: ['@babel/es2015'],
+      presets: ['@babel/env'],
       plugins: [
         ['./src/index.js', { extensions: ['txt'] }],
       ],

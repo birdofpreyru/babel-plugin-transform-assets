@@ -48,7 +48,9 @@ export default function transformAssets({ types: t }) {
           return;
         }
 
-        if (currentConfig.extensions.find(ext => args[0].value.endsWith(ext))) {
+        if (currentConfig.extensions.find(
+          (ext) => args[0].value.endsWith(ext),
+        )) {
           const [{ value: filePath }] = args;
 
           if (!t.isExpressionStatement(path.parent)) {
