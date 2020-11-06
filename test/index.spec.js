@@ -94,4 +94,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       extensions: ['txt'],
     }).code).to.be.equal('"use strict";');
   });
+
+  it('fixtures/png-import.js with [contenthash] in name', () => {
+    expect(transform('fixtures/png-import.js', {
+      extensions: ['png'],
+      name: '/images/[contenthash].[ext]',
+    }).code).to.be.equal(`"use strict";
+
+var _logo = _interopRequireDefault("/images/cd564973d92d0a8a8a1787f4eafd8f51.png");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
+  });
 });

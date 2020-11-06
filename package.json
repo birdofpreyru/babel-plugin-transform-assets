@@ -43,7 +43,7 @@
     "url": "https://github.com/jmurzy/babel-plugin-transform-assets/issues"
   },
   "dependencies": {
-    "asset-require-hook": "^1.0.2"
+    "loader-utils": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",

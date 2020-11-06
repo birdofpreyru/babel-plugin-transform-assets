@@ -1,4 +1,7 @@
+import fs from 'fs';
 import { dirname, isAbsolute, resolve } from 'path';
+
+import { interpolateName } from 'loader-utils';
 
 const defaultOptions = {
   name: '[name].[ext]?[sha512:hash:base64:7]',
@@ -33,10 +36,6 @@ export default function transformAssets({ types: t }) {
 
         currentConfig.extensions = currentConfig.extensions || [];
 
-        /* eslint-disable global-require */
-        require('asset-require-hook')(currentConfig);
-        /* eslint-enable */
-
         const {
           callee: {
             name: calleeName,
@@ -55,8 +54,15 @@ export default function transformAssets({ types: t }) {
 
           if (!t.isExpressionStatement(path.parent)) {
             const from = resolveModulePath(file.opts.filename);
-            /* eslint-disable global-require, import/no-dynamic-require, new-cap */
-            const p = require(resolve(from, filePath));
+
+            const resourcePath = resolve(from, filePath);
+
+            const p = interpolateName({
+              resourcePath: resolve(from, filePath),
+            }, currentConfig.name, {
+              context: from,
+              content: fs.readFileSync(resourcePath),
+            });
 
             path.replaceWith(t.StringLiteral(p));
             /* eslint-enable */
