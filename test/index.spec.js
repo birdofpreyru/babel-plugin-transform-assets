@@ -7,7 +7,8 @@ import gulpBabel from 'gulp-babel';
 
 describe('transforms assets', () => {
   const transform = (filename, config = {}) => transformFileSync(
-    path.resolve(__dirname, filename), {
+    path.resolve(__dirname, filename),
+    {
       babelrc: false,
       presets: ['@babel/env'],
       plugins: [
@@ -21,7 +22,7 @@ describe('transforms assets', () => {
       extensions: ['txt'],
     }).code).to.be.equal(`"use strict";
 
-var file = "file.txt?9LDjftP";`);
+var file = "file.txt?vmiIOMq";`);
   });
 
   it('replaces import statements with filename', () => {
@@ -29,8 +30,7 @@ var file = "file.txt?9LDjftP";`);
       extensions: ['txt'],
     }).code).to.be.equal(`"use strict";
 
-var _file = _interopRequireDefault("file.txt?9LDjftP");
-
+var _file = _interopRequireDefault("file.txt?vmiIOMq");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
   });
 
@@ -48,9 +48,7 @@ Object.defineProperty(exports, "file", {
     return _file["default"];
   }
 });
-
-var _file = _interopRequireDefault("file.txt?9LDjftP");
-
+var _file = _interopRequireDefault("file.txt?vmiIOMq");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
   });
 
@@ -66,7 +64,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
     stream.on('data', (file) => {
       expect(file.contents.toString()).to.be.equal(`"use strict";
 
-var _file = _interopRequireDefault("file.txt?9LDjftP");
+var _file = _interopRequireDefault("file.txt?vmiIOMq");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }`);
     });
@@ -101,8 +99,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       name: '/images/[contenthash].[ext]',
     }).code).to.be.equal(`"use strict";
 
-var _logo = _interopRequireDefault("/images/cd564973d92d0a8a8a1787f4eafd8f51.png");
-
+var _logo = _interopRequireDefault("/images/b096687fd2b2c782.png");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
   });
 });
