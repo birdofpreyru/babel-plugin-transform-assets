@@ -2,7 +2,7 @@ import { transformFileSync } from '@babel/core';
 import { expect } from 'chai';
 import path from 'path';
 import fs from 'fs';
-import gulpUtil from 'gulp-util';
+import Vinyl from 'vinyl';
 import gulpBabel from 'gulp-babel';
 
 describe('transforms assets', () => {
@@ -71,7 +71,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
     stream.on('end', cb);
 
-    stream.write(new gulpUtil.File({
+    stream.write(new Vinyl({
       cwd: __dirname,
       base: path.join(__dirname, 'fixtures'),
       path: path.join(__dirname, 'fixtures/import-txt.js'),
