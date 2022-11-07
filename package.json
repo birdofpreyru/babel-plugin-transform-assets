@@ -1,11 +1,11 @@
 {
   "name": "@dr.pogodin/babel-plugin-transform-assets",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Transforms importing of asset files at compile time using Babel",
   "main": "build/index.js",
   "author": "Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio)",
   "license": "MIT",
-  "homepage": "https://dr.pogodin.studio",
+  "homepage": "https://dr.pogodin.studio/docs/babel-plugin-transform-assets",
   "keywords": [
     "babel",
     "webpack",
@@ -20,12 +20,6 @@
     "isomorphic",
     "asset-require-hook"
   ],
-  "contributors": [
-    {
-      "name": "Jake Murzy",
-      "email": "jake@murzy"
-    }
-  ],
   "engines": {
     "node": ">=6.0.0"
   },
@@ -35,10 +29,7 @@
     "lint": "node node_modules/.bin/eslint src test",
     "test": "npm run lint && node node_modules/.bin/mocha --require @babel/register 'test/**/*.spec.js'"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/birdofpreyru/babel-plugin-transform-assets.git"
-  },
+  "repository": "github:birdofpreyru/babel-plugin-transform-assets",
   "bugs": {
     "url": "https://github.com/birdofpreyru/babel-plugin-transform-assets/issues"
   },
@@ -47,12 +38,12 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.6",
-    "@babel/preset-env": "^7.19.4",
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.18.9",
     "babel-eslint": "^10.1.0",
-    "chai": "^4.3.6",
-    "eslint": "^8.25.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "gulp-babel": "^8.0.0-beta.2",

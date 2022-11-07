@@ -1,8 +1,17 @@
 # Babel Plugin Transform Assets
 
-_This is a fork of [`babel-plugin-transform-assets`](https://www.npmjs.com/package/babel-plugin-transform-assets) upgraded to be compatible with the latest Webpack's `file-loder`, and to use the latest versions of all dependencies. For migration just prefix the plugin name with `@dr.pogodin/` scopename in your `package.json` and Babel configs._
+[![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-plugin-transform-assets.svg)](https://www.npmjs.com/package/@dr.pogodin/babel-plugin-transform-assets)
+[![NPM Downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-plugin-transform-assets.svg)](https://www.npmjs.com/package/@dr.pogodin/babel-plugin-transform-assets)
+[![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-plugin-transform-assets?style=social)](https://github.com/birdofpreyru/babel-plugin-transform-assets)
 
 Transforms importing of asset files at compile time using Babel. This plugin removes the need to run your server code through [Webpack](https://github.com/webpack/webpack) module bundler when using loaders such as file-loader, url-loader and building <s>isomorphic</s> universal apps. Aids in creating a cleaner, maintainable build process at the cost of yet another [Babel](https://github.com/babel/babel) [plugin](https://babeljs.io/docs/plugins/).
+
+[![Sponsor](.README/sponsor.png)](https://github.com/sponsors/birdofpreyru)
+
+---
+_This is a fork of [`babel-plugin-transform-assets`](https://www.npmjs.com/package/babel-plugin-transform-assets) upgraded to be compatible with the latest Webpack's `file-loder`, and to use the latest versions of all dependencies. For migration just prefix the plugin name with `@dr.pogodin/` scopename in your `package.json` and Babel configs._
+
+---
 
 ## Example
 
@@ -60,7 +69,3 @@ require('babel-core').transform('code', {
 ### Contributing
 
 Contributions are very welcome—bug fixes, features, documentation, tests. Just make sure the tests are passing.
-
-### Related Projects
-
-[babel-plugin-css-modules-transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
