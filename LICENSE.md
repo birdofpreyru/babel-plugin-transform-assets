@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright &copy; 2020&ndash;2022 Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio) \
+Copyright &copy; 2020&ndash;2023 Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio) \
 Copyright &copy; 2015&ndash;2016 Jake Murzy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { dirname, isAbsolute, resolve } from 'path';
+import enhancedResolve from 'enhanced-resolve';
 
 import { interpolateName } from 'loader-utils';
 
@@ -55,10 +56,10 @@ export default function transformAssets({ types: t }) {
           if (!t.isExpressionStatement(path.parent)) {
             const from = resolveModulePath(file.opts.filename);
 
-            const resourcePath = resolve(from, filePath);
+            const resourcePath = enhancedResolve.sync(from, filePath);
 
             const p = interpolateName({
-              resourcePath: resolve(from, filePath),
+              resourcePath,
             }, currentConfig.name, {
               context: from,
               content: fs.readFileSync(resourcePath),
