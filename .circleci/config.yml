@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: cimg/node:lts
+    - image: cimg/node:22.12 # LTS
 
 version: 2.1
 jobs:
