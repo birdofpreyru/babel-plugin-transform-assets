@@ -1,8 +1,9 @@
 {
   "name": "@dr.pogodin/babel-plugin-transform-assets",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Transforms importing of asset files at compile time using Babel",
   "main": "build/index.js",
+  "type": "commonjs",
   "author": "Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio)",
   "license": "MIT",
   "homepage": "https://dr.pogodin.studio/docs/babel-plugin-transform-assets",
@@ -34,26 +35,26 @@
     "url": "https://github.com/birdofpreyru/babel-plugin-transform-assets/issues"
   },
   "dependencies": {
-    "enhanced-resolve": "^5.12.0",
-    "loader-utils": "^3.2.1"
+    "enhanced-resolve": "^5.18.0",
+    "loader-utils": "^3.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/register": "^7.18.9",
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/register": "^7.25.9",
     "babel-eslint": "^10.1.0",
-    "chai": "^4.3.7",
-    "eslint": "^8.32.0",
+    "chai": "^5.1.2",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.4",
-    "fs-monkey": "^1.0.3",
+    "eslint-plugin-import": "^2.31.0",
+    "fs-monkey": "^1.0.6",
     "gulp-babel": "^8.0.0-beta.2",
-    "memfs": "^3.4.13",
-    "mocha": "^10.2.0",
+    "memfs": "^4.15.1",
+    "mocha": "^11.0.1",
     "mocha-each": "^2.0.1",
-    "rimraf": "^4.0.7",
-    "unionfs": "^4.4.0",
+    "rimraf": "^6.0.1",
+    "unionfs": "^4.5.4",
     "vinyl": "^3.0.0"
   }
 }

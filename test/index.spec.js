@@ -48,7 +48,7 @@ var file = "file.txt?vmiIOMq";`);
       }).code).to.be.equal(`"use strict";
 
 var _file = _interopRequireDefault("file.txt?vmiIOMq");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
     });
 
     it('replaces import statements with filename and then exports', () => {
@@ -66,7 +66,7 @@ Object.defineProperty(exports, "file", {
   }
 });
 var _file = _interopRequireDefault("file.txt?vmiIOMq");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
     });
 
     it('replaces import statement with filename via gulp', (cb) => {
@@ -83,7 +83,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _file = _interopRequireDefault("file.txt?vmiIOMq");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }`);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }`);
       });
 
       stream.on('end', cb);
@@ -117,7 +117,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       }).code).to.be.equal(`"use strict";
 
 var _logo = _interopRequireDefault("/images/b096687fd2b2c782.png");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }`);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
     });
   });
 });
