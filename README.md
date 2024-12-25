@@ -6,7 +6,7 @@
 
 Transforms importing of asset files at compile time using Babel. This plugin removes the need to run your server code through [Webpack](https://github.com/webpack/webpack) module bundler when using loaders such as file-loader, url-loader and building <s>isomorphic</s> universal apps. Aids in creating a cleaner, maintainable build process at the cost of yet another [Babel](https://github.com/babel/babel) [plugin](https://babeljs.io/docs/plugins/).
 
-[![Sponsor](.README/sponsor.png)](https://github.com/sponsors/birdofpreyru)
+[![Sponsor](https://raw.githubusercontent.com/birdofpreyru/babel-plugin-transform-assets/refs/heads/master/.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
 
 ---
 _This is a fork of [`babel-plugin-transform-assets`](https://www.npmjs.com/package/babel-plugin-transform-assets) upgraded to be compatible with the latest Webpack's `file-loder`, and to use the latest versions of all dependencies. For migration just prefix the plugin name with `@dr.pogodin/` scopename in your `package.json` and Babel configs._

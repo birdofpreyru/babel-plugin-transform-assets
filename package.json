@@ -1,9 +1,8 @@
 {
   "name": "@dr.pogodin/babel-plugin-transform-assets",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Transforms importing of asset files at compile time using Babel",
   "main": "build/index.js",
-  "type": "module",
   "author": "Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio)",
   "license": "MIT",
   "homepage": "https://dr.pogodin.studio/docs/babel-plugin-transform-assets",
