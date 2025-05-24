@@ -1,3 +1,5 @@
+/* global process */
+
 import fs from 'fs';
 import { dirname, isAbsolute, resolve } from 'path';
 import enhancedResolve from 'enhanced-resolve';
@@ -35,7 +37,7 @@ export default function transformAssets({ types: t }) {
           return;
         }
 
-        currentConfig.extensions = currentConfig.extensions || [];
+        currentConfig.extensions ||= [];
 
         const {
           callee: {
@@ -53,7 +55,8 @@ export default function transformAssets({ types: t }) {
         )) {
           const [{ value: filePath }] = args;
 
-          if (!t.isExpressionStatement(path.parent)) {
+          if (t.isExpressionStatement(path.parent)) path.remove();
+          else {
             const from = resolveModulePath(file.opts.filename);
 
             const resourcePath = enhancedResolve.sync(from, filePath);
@@ -61,14 +64,12 @@ export default function transformAssets({ types: t }) {
             const p = interpolateName({
               resourcePath,
             }, currentConfig.name, {
-              context: from,
               content: fs.readFileSync(resourcePath),
+              context: from,
             });
 
+            // eslint-disable-next-line @babel/new-cap
             path.replaceWith(t.StringLiteral(p));
-            /* eslint-enable */
-          } else {
-            path.remove();
           }
         }
       },

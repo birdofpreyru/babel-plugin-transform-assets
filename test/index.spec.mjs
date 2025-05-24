@@ -1,3 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
+/* global before, describe, it, URL */
+
 import { transformFileSync } from '@babel/core';
 import { expect } from 'chai';
 import fs from 'fs';
@@ -23,10 +27,10 @@ describe('transforms assets', () => {
     new URL(import.meta.resolve(filename)).pathname,
     {
       babelrc: false,
-      presets: ['@babel/env'],
       plugins: [
         ['./src/index.js', config],
       ],
+      presets: ['@babel/env'],
     },
   );
   withThese([
@@ -71,10 +75,10 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
     it('replaces import statement with filename via gulp', (cb) => {
       const stream = gulpBabel({
         babelrc: false,
-        presets: ['@babel/env'],
         plugins: [
           ['./src/index.js', { extensions: ['txt'] }],
         ],
+        presets: ['@babel/env'],
       });
 
       stream.on('data', (file) => {
@@ -88,10 +92,10 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
       stream.on('end', cb);
 
       stream.write(new Vinyl({
-        cwd: new URL(import.meta.resolve('.')).pathname,
         base: new URL(import.meta.resolve('./fixtures')).pathname,
-        path: new URL(import.meta.resolve(`./fixtures/import-txt${suffix}.js`)).pathname,
         contents: fs.readFileSync(new URL(import.meta.resolve(`./fixtures/import-txt${suffix}.js`))),
+        cwd: new URL(import.meta.resolve('.')).pathname,
+        path: new URL(import.meta.resolve(`./fixtures/import-txt${suffix}.js`)).pathname,
       }));
 
       stream.end();

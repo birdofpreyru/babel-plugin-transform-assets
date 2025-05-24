@@ -1,43 +1,67 @@
+install-build-test: &install-build-test
+  - checkout
+  - restore_cache:
+      key: node-modules-{{ checksum "package-lock.json" }}
+  - run: npm install
+  - save_cache:
+      key: node-modules-{{ checksum "package-lock.json" }}
+  - run: npm run build
+  - run: npm test
+
 defaults: &defaults
   docker:
-    - image: cimg/node:22.12 # LTS
+    - image: cimg/node:22.16 # LTS
 
 version: 2.1
 jobs:
-  test:
-    <<: *defaults
+  test-node-20: # Maintenance, EOL 2026.04.30
+    docker:
+      - image: cimg/node:20.19
     steps:
-      - checkout
-      - restore_cache:
-          key: node-modules-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: node-modules-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm run build
-      - run: npm test
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
+      *install-build-test
+  test-node-22: # LTS, EOL 2027.04.30
+    docker:
+      - image: cimg/node:22.16
+    steps:
+      *install-build-test
+  test-node-23: # Maintenance, EOL 2025.06.01
+    docker:
+      - image: cimg/node:23.11
+    steps:
+      *install-build-test
+  test-node-24: # Current, EOL 2028.04.30
+    docker:
+      - image: cimg/node:24.1
+    steps:
+      *install-build-test
   release:
-    <<: *defaults
+    docker:
+      - image: cimg/node:lts
     steps:
-      - checkout
-      - attach_workspace:
-          at: .
+      - when:
+          condition: true
+          steps:
+            *install-build-test
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm publish --access public
+
+test-filters: &test-filters
+  filters:
+    tags:
+      only: /.*/
 
 workflows:
   version: 2
   build:
     jobs:
-      - test:
-          filters:
-            tags:
-              only: /.*/
+      - test-node-20:
+          <<: *test-filters
+      - test-node-22:
+          <<: *test-filters
+      - test-node-23:
+          <<: *test-filters
+      - test-node-24:
+          <<: *test-filters
       - release:
           filters:
             branches:
@@ -45,4 +69,7 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
           requires:
-            - test
+            - test-node-20
+            - test-node-22
+            - test-node-23
+            - test-node-24
