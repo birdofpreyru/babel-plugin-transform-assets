@@ -8,10 +8,6 @@ install-build-test: &install-build-test
   - run: npm run build
   - run: npm test
 
-defaults: &defaults
-  docker:
-    - image: cimg/node:22.16 # LTS
-
 version: 2.1
 jobs:
   test-node-20: # Maintenance, EOL 2026.04.30
