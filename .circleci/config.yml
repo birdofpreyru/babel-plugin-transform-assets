@@ -5,6 +5,8 @@ install-build-test: &install-build-test
   - run: npm install
   - save_cache:
       key: node-modules-{{ checksum "package-lock.json" }}
+      paths:
+        - node_modules
   - run: npm run build
   - run: npm test
 
