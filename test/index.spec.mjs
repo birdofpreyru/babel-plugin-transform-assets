@@ -2,15 +2,16 @@
 
 /* global before, describe, it, URL */
 
-import { transformFileSync } from '@babel/core';
+import fs from 'node:fs';
+
 import { expect } from 'chai';
-import fs from 'fs';
-import Vinyl from 'vinyl';
-import gulpBabel from 'gulp-babel';
-import { vol, fs as memfs } from 'memfs';
-import { ufs } from 'unionfs';
 import { patchFs } from 'fs-monkey';
+import gulpBabel from 'gulp-babel';
+import { fs as memfs, vol } from 'memfs';
 import withThese from 'mocha-each';
+import { ufs } from 'unionfs';
+import Vinyl from 'vinyl';
+import { transformFileSync } from '@babel/core';
 
 describe('transforms assets', () => {
   before(() => {

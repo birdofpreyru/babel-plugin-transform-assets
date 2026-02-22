@@ -1,7 +1,8 @@
 /* global process */
 
-import fs from 'fs';
-import { dirname, isAbsolute, resolve } from 'path';
+import fs from 'node:fs';
+import { dirname, isAbsolute, resolve } from 'node:path';
+
 import enhancedResolve from 'enhanced-resolve';
 
 import { interpolateName } from 'loader-utils';
@@ -40,10 +41,10 @@ export default function transformAssets({ types: t }) {
         currentConfig.extensions ||= [];
 
         const {
+          arguments: args,
           callee: {
             name: calleeName,
           },
-          arguments: args,
         } = path.node;
 
         if (calleeName !== 'require' || !args.length || !t.isStringLiteral(args[0])) {

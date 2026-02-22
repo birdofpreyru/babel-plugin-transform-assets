@@ -5,3 +5,4 @@ lib/
 yarn-error.log
 /dr.pogodin-babel-plugin-transform-assets-*.tgz
 /build
+/.eslintcache
