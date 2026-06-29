@@ -22,13 +22,13 @@ import file from '../file.txt';
 will be transformed to
 
 ```js
-var file = 'file.txt?9LDjftP';
+const file = 'file.txt?9LDjftP';
 ```
 
 See the spec for [more examples](https://github.com/birdofpreyru/babel-plugin-transform-assets/blob/master/test/index.spec.js).
 
 ## Requirements
-[Babel](https://github.com/babel/babel) v6 or higher.
+[Babel](https://github.com/babel/babel) v8 or higher.
 
 ## Installation
 
