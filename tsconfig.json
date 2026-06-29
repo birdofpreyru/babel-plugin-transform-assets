@@ -1,0 +1,14 @@
+// TS config for ESLint, editor plugins, and other tools that look-up and use
+// the default tsconfig.json file.
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+
+  // Relative path, as some tools relying on this config do not support Node's
+  // module resolution mechanics.
+  "extends": "./config/typescript/base.json",
+
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler"
+  }
+}

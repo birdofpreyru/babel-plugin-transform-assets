@@ -29,7 +29,7 @@ describe('transforms assets', () => {
     {
       babelrc: false,
       plugins: [
-        ['./src/index.js', config],
+        ['./build/index.js', config],
       ],
       presets: ['@babel/env'],
     },
@@ -41,36 +41,20 @@ describe('transforms assets', () => {
     it('replaces require statements with filename', () => {
       expect(transform(`./fixtures/require-txt${suffix}.js`, {
         extensions: ['txt'],
-      }).code).to.be.equal(`"use strict";
-
-var file = "file.txt?vmiIOMq";`);
+      }).code).to.be.equal('const file = "file.txt?vmiIOMq";');
     });
 
     it('replaces import statements with filename', () => {
       expect(transform(`./fixtures/import-txt${suffix}.js`, {
         extensions: ['txt'],
-      }).code).to.be.equal(`"use strict";
-
-var _file = _interopRequireDefault("file.txt?vmiIOMq");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
+      }).code).to.be.equal('const file = "file.txt?vmiIOMq";');
     });
 
     it('replaces import statements with filename and then exports', () => {
       expect(transform(`./fixtures/import-export-txt${suffix}.js`, {
         extensions: ['txt'],
-      }).code).to.be.equal(`"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "file", {
-  enumerable: true,
-  get: function get() {
-    return _file["default"];
-  }
-});
-var _file = _interopRequireDefault("file.txt?vmiIOMq");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
+      }).code).to.be.equal(`const file = "file.txt?vmiIOMq";
+export { file };`);
     });
 
     it('replaces import statement with filename via gulp', (cb) => {
@@ -105,23 +89,20 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
     it('removes global requires', () => {
       expect(transform(`./fixtures/empty-require${suffix}.js`, {
         extensions: ['txt'],
-      }).code).to.be.equal('"use strict";');
+      }).code).to.be.equal('');
     });
 
     it('fixtures/empty-import.js', () => {
       expect(transform(`./fixtures/empty-import${suffix}.js`, {
         extensions: ['txt'],
-      }).code).to.be.equal('"use strict";');
+      }).code).to.be.equal('');
     });
 
     it('fixtures/png-import.js with [contenthash] in name', () => {
       expect(transform(`./fixtures/png-import${suffix}.js`, {
         extensions: ['png'],
         name: '/images/[contenthash].[ext]',
-      }).code).to.be.equal(`"use strict";
-
-var _logo = _interopRequireDefault("/images/b096687fd2b2c782.png");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }`);
+      }).code).to.be.equal('const pngUrl = "/images/b096687fd2b2c782.png";');
     });
   });
 });
